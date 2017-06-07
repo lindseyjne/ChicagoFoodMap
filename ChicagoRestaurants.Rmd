@@ -1,0 +1,47 @@
+---
+title: "My Favorite Chicago Area Food Spots"
+author: "Lindsey Erickson"
+date: "June 6, 2017"
+output: html_document
+---
+
+#The best locations for great food in the Chicago Area
+Click on the icons in the map to pull up the webpage for each location.
+
+```{r, echo=TRUE, warning=FALSE}
+library(leaflet)
+
+
+#the locations for each restaurant 
+chiFoodLatLong <- data.frame(
+  lat = c(41.929986, 42.022159, 41.908978, 41.921931, 41.908965, 41.951228, 41.881863, 41.968050, 41.947520, 41.936831, 41.939646, 41.951836, 41.891596, 42.049785, 41.957551),
+  lng = c(-87.846699, -87.876079, -87.814940, -87.664308, -87.813319, -87.807202, -87.625594, -87.688395, -87.727735, -88.075408, -87.659587, -87.747015, -87.804746, -87.682513, -87.688249)
+)
+
+#Restaurant websites
+chiFoodSites <- c(
+  "<a href='https://geneandjudes.com/'>Gene and Judes</a>",
+  "<a href='https://www.yelp.com/biz/paradise-pup-des-plaines'>Paradise Pup</a>", 
+  "<a href='http://alpinefoodshop.com/'>Alpine Food Shop</a>",
+  "<a href='http://pequodspizza.com/chicago'>Pequods Pizza</a>",
+  "<a href='https://www.yelp.com/biz/johnnies-beef-elmwood-park'>Johnnies Beef</a>",
+  "<a href='http://www.mrbeefandpizza.com/'>Mr Beef and Pizza</a>",
+  "<a href='http://www.pizanoschicago.com/the-loop.php'>Pizanos Pizza and Pasta</a>",
+  "<a href='https://www.yelp.com/biz/garcias-restaurant-chicago'>Garcias Restaurant</a>",
+  "<a href='http://www.lavillabanquets.com/'>La Villa Restaurant</a>",
+  "<a href='http://generosopizza.com/'>Generoso Pizza</a>",
+  "<a href='http://www.murphyshotdogs.com/ '>Murphys Red Hots</a>",
+  "<a href='https://www.yelp.com/biz/jeffs-red-hots-chicago'>Jeffs Red Hots</a>",
+  "<a href='https://www.yelp.com/biz/mickeys-gyros-and-ribs-oak-park'>Mickeys Gyros and Ribs</a>",
+  "<a href='http://buffalojoesevanston.com/'>Buffalo Joes</a>",
+  "<a href='http://armandspizzeria.com/stores/western/index.html'>Armands Pizza</a>"
+ 
+)
+
+#Create the map showing the restaurant locations
+chiFoodLatLong %>%
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(popup = chiFoodSites)
+
+```
